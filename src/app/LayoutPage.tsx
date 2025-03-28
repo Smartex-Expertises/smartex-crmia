@@ -1,5 +1,6 @@
 // app/layout.tsx
 import { Geist, Geist_Mono } from "next/font/google";
+import Header from "@/components/Header";
 import "./globals.css"; // Fichier de styles global
 
 const geistSans = Geist({
@@ -15,7 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "SMARTEX CRMIA", // Valeur par défaut pour le titre
   description:
-    "SMARTEX CRM-IA, l’ensemble des prestations de l’entreprise qui visent à développer des solutions IA en vue d’assister et d’accompagner les entreprises à scaler plus rapidement et à améliorer leur performance globale.",
+    "SMARTEX CRM-IA, l'ensemble des prestations de l'entreprise qui visent à développer des solutions IA en vue d'assister et d'accompagner les entreprises à scaler plus rapidement et à améliorer leur performance globale.",
 };
 
 export default function RootLayout({
@@ -28,12 +29,13 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
         <head>
-          <title>{`SMARTEX CRMIA - ${name}`}</title>
-          <meta name="apple-mobile-web-app-title"  />
+          <title>{`SMARTEX CRMIA${name ? ` - ${name}` : ""}`}</title>
+          <meta name="apple-mobile-web-app-title" content="CRMIA" />
         </head>
+        <Header />
         {children}
       </body>
     </html>
